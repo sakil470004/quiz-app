@@ -1,14 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { AuthContext } from "@/providers/AuthProvider";
+import React, { useContext, useEffect, useState } from "react";
 
 const Question = () => {
   const [questions, setQuestions] = useState([]);
   const [showAns, setShowAns] = useState(false);
+  const { currentLanguage} =
+  useContext(AuthContext);
   useEffect(() => {
-    fetch("http://localhost:5000/question")
+    fetch(`http://localhost:5000/question/${currentLanguage}`)
       .then((res) => res.json())
       .then((data) => setQuestions(data));
-  }, []);
+  }, [currentLanguage]);
 
   const handleOptionSelect = (questionId, selectedOption) => {
     setQuestions((prevQuestions) =>

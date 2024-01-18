@@ -23,6 +23,7 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentLanguage, setCurrentLanguage] = useState("english");
 
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
@@ -59,6 +60,8 @@ const AuthProvider = ({ children }) => {
     updateUser,
     googleLogin,
     githubLogin,
+    currentLanguage,
+    setCurrentLanguage
   };
   if (loading)
     return (

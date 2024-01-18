@@ -3,10 +3,10 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "@/providers/AuthProvider";
 import { HiOutlineLanguage } from "react-icons/hi2";
 const Navbar = () => {
-  const { logOut, user } = useContext(AuthContext);
-  const [currentLanguage, setCurrentLanguage] = useState("english");
+  const { logOut, user, currentLanguage, setCurrentLanguage } =
+    useContext(AuthContext);
   const language = ["english", "india", "bangladesh", "france", "germany"];
-  console.log(user);
+console.log(currentLanguage)
   return (
     <div class="navbar bg-base-100">
       <div class="flex-1">
@@ -39,7 +39,7 @@ const Navbar = () => {
                         name="language"
                         value={option}
                         checked={option === currentLanguage}
-                        //   onChange={() => handleOptionSelect(question.id, option)}
+                        onChange={() => setCurrentLanguage(option)}
                         className="form-radio text-blue-500"
                       />
                       <span>{option.toUpperCase()}</span>
