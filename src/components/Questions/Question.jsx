@@ -9,7 +9,7 @@ const Question = () => {
   const [point, setPoint] = useState(0);
   const { currentLanguage, user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/question/${currentLanguage}`)
+    fetch(`https://quiz-app-backend-kkiq8vfum-sakil470004.vercel.app/question/${currentLanguage}`)
       .then((res) => res.json())
       .then((data) => {
         setQuestions(data);
@@ -47,7 +47,7 @@ const Question = () => {
     setPoint(totalPoint);
     data[currentLanguage] = totalPoint;
     // console.log(data)
-    fetch("http://localhost:5000/addScore", {
+    fetch("https://quiz-app-backend-kkiq8vfum-sakil470004.vercel.app/addScore", {
       method: "POST",
       headers: {
         "content-type": "application/json",

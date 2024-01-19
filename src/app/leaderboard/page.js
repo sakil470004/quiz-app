@@ -14,7 +14,7 @@ const page = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/score")
+    fetch("https://quiz-app-backend-kkiq8vfum-sakil470004.vercel.app/score")
       .then((res) => res.json())
       .then((data) => {
         const currentLGScore = data.filter((SC) => SC.hasOwnProperty(language));
