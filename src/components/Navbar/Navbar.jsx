@@ -2,31 +2,34 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "@/providers/AuthProvider";
 import { HiOutlineLanguage } from "react-icons/hi2";
+import Link from "next/link";
 const Navbar = () => {
   const { logOut, user, currentLanguage, setCurrentLanguage } =
     useContext(AuthContext);
-  const language = ["english", "india", "bangladesh", "france", "germany"];
-console.log(currentLanguage)
+  const language = ["english", "hindi", "bangla", "french", "german"];
+
   return (
-    <div class="navbar bg-base-100">
-      <div class="flex-1">
-        <a class="btn btn-ghost text-2xl italic text-red-500">Quiz APP</a>
+    <div className="navbar bg-base-100">
+      <div className="flex-1">
+        <Link href={"/"} className="btn btn-ghost text-2xl italic text-red-500">
+          Quiz APP
+        </Link>
       </div>
-      <div class="flex-none">
-        <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-            <div class="indicator">
+      <div className="flex-none">
+        <div className="dropdown dropdown-end">
+          <div tabindex="0" role="button" className="btn btn-ghost btn-circle">
+            <div className="indicator">
               <HiOutlineLanguage className="text-2xl" />
-              <span class="badge badge-sm indicator-item">
+              <span className="badge badge-sm indicator-item">
                 {language.length}
               </span>
             </div>
           </div>
           <div
             tabindex="0"
-            class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+            className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
-            <div class="card-body">
+            <div className="card-body">
               <ul>
                 {language.map((option) => (
                   <li
@@ -51,13 +54,13 @@ console.log(currentLanguage)
             </div>
           </div>
         </div>
-        <div title={user?.displayName} class="dropdown dropdown-end">
+        <div title={user?.displayName} className="dropdown dropdown-end">
           <div
             tabindex="0"
             role="button"
-            class="btn btn-ghost btn-circle avatar"
+            className="btn btn-ghost btn-circle avatar"
           >
-            <div class="w-10 rounded-full">
+            <div className="w-10 rounded-full">
               <img
                 alt="Profile Photo"
                 src={
@@ -70,17 +73,21 @@ console.log(currentLanguage)
           </div>
           <ul
             tabindex="0"
-            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a class="justify-between">
+              <a className="justify-between">
                 Profile
-                <span class="badge">{user?.displayName}</span>
+                <span className="badge">{user?.displayName}</span>
               </a>
+            </li>
+            <li>
+              <Link href={"/leaderboard"}>Leader Board</Link>
             </li>
             <li>
               <a>Settings</a>
             </li>
+
             <li onClick={() => logOut()}>
               <a>Logout</a>
             </li>
